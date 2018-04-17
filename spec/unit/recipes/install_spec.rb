@@ -6,7 +6,7 @@
 
 require 'spec_helper'
 
-describe 'httpd::default' do
+describe 'httpd::install' do
   context 'When all attributes are default, on an Ubuntu 16.04' do
     let(:chef_run) do
       # for a complete list of available platforms and versions see:
@@ -18,22 +18,5 @@ describe 'httpd::default' do
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
-
-    it 'installs package' do
-      expect(chef_run).to install_package('httpd')
-    end
-
-    it 'service are started' do
-      expect(chef_run).to start_service('httpd')
-    end
-
-    it 'service are enabled' do
-      expect(chef_run).to enable_service('httpd')
-    end
-    
-    it 'writes out a welcome html file' do
-      expect(chef_run).to create_file('/var/www/html/index.html').with(content: '<h1>Welcome Home</h1>')
-    end
-
   end
 end
