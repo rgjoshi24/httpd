@@ -4,7 +4,7 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 #
-package 'httpd'
+include_recipe 'httpd::install'
 
 service 'httpd' do
   action [:enable, :start]
